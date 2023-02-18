@@ -33,7 +33,7 @@
 ******************************************************************************/
 
 #ifndef _SS_MAX_RX_BUFF
-#define _SS_MAX_RX_BUFF 64  // RX buffer size
+#define _SS_MAX_RX_BUFF 64	//64  // RX buffer size
 #endif
 
 #ifndef _SS_TX_ONLY
@@ -162,7 +162,9 @@ void SoftwareSerial::begin(long speed)
 
    // Precalculate the various delays
    // Calculate the distance between bit in micro seconds
-   uint32_t bit_delay = (float(1) / speed) * 1000000;
+   //int32_t bit_delay = (float(1) / speed) * 1000000;
+   uint32_t bit_delay =  (float(1.04) / speed) * 1000000;		//modify by kenny huang on 2019/12/08, with BLE active, for 2553 2020/06/16
+   //uint32_t bit_delay =  (float(1.03) / speed) * 1000000;		//modify by kenny huang on 2019/12/13, with BLE active
 
    _tx_delay_us = bit_delay;
 #if (_SS_TX_ONLY == 0)
